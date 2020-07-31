@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <style type="text/css">
+      /*
+       .title {
+          font-size: 14px;
+          font-weight: 100;
+          font-family: "Times New Roman", Times, serif;
+          padding: 10px 20px 0px 20px;
+      }
+
+      .producto{
+        font-size: 14px;
+        font-weight: 100;
+        font-family: "Aharoni" serif;
+        text-align = 'center';
+        padding: 10px 20px 0px 20px;
+      } */
+
+</style>
+    <title>COMPROBANTE No. {{venta.pk}}</title>
+  </head>
+  <body>
+    <h1 align="center" class="title">MULTISERVICIOS LEMUS</h1>
+    <p align="center">Jocotan , Chiquimula</p>
+    <p align="center">Tel: 3088-7097/5517-6915</p>
+  <h1 align="right" style="color:red">COMPROBANTE No. {{venta.pk}}</h1>
+  <hr>
+  <table>
+    <th width=20%>No. Venta</th>
+    <th colspan="3" align="center">Cliente</th>
+    <th>Total</th>
+    <tr>
+      <td width=20% align="center">{{venta.pk}}</td>
+      <td colspan="3" align="center">{{venta.cliente}}</td>
+      <td align="center">{{venta.calcular_total}}</td>
+    </tr>
+  </table>
+<hr>
+  <table>
+    <th width="20%"> Cantidad</th>
+    <th colspan="3" align="center">Producto</th>
+    <th>Precio Unitario</th>
+    {%for d in detalle%}
+    <tr>
+      <td width=20% align="center">{{d.cantidad}}</td>
+      <td colspan="3"align="center">{{d.producto}}</td>
+      <td align="center">Q.{{d.producto.precio}}</td>
+    </tr>
+    {%endfor%}
+  </table>
+  <hr>
+  <h1 align="center">TOTAL:<b> {{venta.calcular_total}}</b> </h1>
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  
+  </body>
+</html>
