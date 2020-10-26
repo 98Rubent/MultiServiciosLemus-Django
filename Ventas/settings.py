@@ -43,8 +43,18 @@ INSTALLED_APPS = [
     'boleta' ,
     'devoluciones' ,
     'easy_pdf',
+#    'rest_framework',
+    'inicio',
 
 ]
+
+#REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+#    'DEFAULT_PERMISSION_CLASSES': [
+#        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+#    ]
+#}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -123,5 +133,8 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
-
+MEDIA_ROOT= os.path.join(BASE_DIR, 'media')
+STATIC_ROOT= os.path.join(BASE_DIR, 'staticfiles')
+MEDIA_URL= '/media/'
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
