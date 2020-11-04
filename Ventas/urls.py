@@ -16,8 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url
-from inicio.views import inicio, home, Conocenos, contacto, log, menuprin, Boleta, Clientes, Productos, Categoria, Proveedores, Reportes
+from inicio.views import inicio, home, Conocenos, contacto, log, menuprin, POS, Clientes, Productos, Categoria_CRUD, Proveedores_CRUD, Reportes
 from boleta.views import Printer
+
+# import from user views
+from usuarios.views import LoginView , LogoutView
 
 #from django.urls import path, include
 #from django.contrib.auth.models import User
@@ -42,18 +45,20 @@ from boleta.views import Printer
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [
+    path('', home , name="index"),
+    path('login/' , LoginView.as_view() , name="login"),
+    path('login/' , LogoutView.as_view() , name="logout"),
     path('index/', inicio),
-    path('home/', home),
-    path('conocenos/', Conocenos),
-    path('contactanos/', contacto),
-    path('login/', log),
-    path('menu/', menuprin),
-    path('boleta/', Boleta),
-    path('clientes/', Clientes),
-    path('productos/', Productos),
-    path('categoria/', Categoria),
-    path('proveedores/', Proveedores),
-    path('reportes_devoluciones/', Reportes),
+    path('conocenos/', Conocenos , name="conocenos"),
+    path('contactanos/', contacto , name="contactanos"),
+    # path('login/', log , name="login"),
+    path('menu/', menuprin , name="menu"),
+    path('POS/', POS, name="pos"),
+    path('clientes/', Clientes , name="clientes"),
+    path('productos/', Productos , name="productos"),
+    path('categoria/', Categoria_CRUD, name="categorias"),
+    path('proveedores/', Proveedores_CRUD, name="proveedores"),
+    path('reportes_devoluciones/', Reportes, name="reports"),
 
 #    path('', include(router.urls)),
 #    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),

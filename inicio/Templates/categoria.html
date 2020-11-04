@@ -1,207 +1,157 @@
-<!DOCTYPE html>
+{% extends "base_2.html" %}
 {% load static %}
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Bootstrap 101 Template</title>
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  </head>
-  <body>
-    <div class="container">
-      <div class="row">
-        <div class="col-3">
-          <img class="img-responsive" src= "{% static 'img/logo_multiservicios.png' %}" height="100" width="240">
+{% block title %}Lista de categorias{% endblock %}
 
+{% block content %}
+<div class="container">
 
-        </div>
-        <div class="col-9">
+  <!-- Boton para abrir el modal -->
+  <p align="right">
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+  + Nueva categoria
+  </button>
+  </p>
 
-      <ul class="nav justify-content-end">
-          <li class="nav-item">
-            <a class="nav-link active" href="#">Inicio</a>
-              </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Conocenos</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="#">Contactanos</a>
-              </li>
-            <li class="nav-item">
-        <a class="nav-link " href="#">Iniciar Sesion</a>
-      </li>
-    </ul>
-
-        </div>
-      </div>
-      Listado de Categorias
-      <!-- Boton para abrir el modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-  Nueva Categoria
-</button>
-
-<!-- The Modal -->
-<div class="modal" id="myModal">
+  <!-- The Modal -->
+  <div class="modal" id="myModal">
   <div class="modal-dialog">
-    <div class="modal-content">
+  <div class="modal-content">
 
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h4 class="modal-title">Nueva Categoria</h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
+    <!-- Modal Header -->
+    <div class="modal-header">
+     <h4 class="modal-title">Nueva categoria</h4>
+     <button type="button" class="close" data-dismiss="modal">&times;</button>
+    </div>
 
-      <!-- Modal body -->
-      <div class="modal-body">
-        <form action="#" method="POST">{% csrf_token %}
-  <div class="form-group">
-    <label for="nombres">Nombres</label>
+    <!-- Modal body -->
+    <div class="modal-body">
+     <form action="#" method="POST">{% csrf_token %}
+    <div class="form-group">
+    <label for="nombres">Nombre</label>
     <input type="text" class="form-control" id="nombres" name="nombres" placeholder="Ingresa el Nombre">
-  </div>
-  <div class="form-group">
-    <label for="apellidos">Apellidos</label>
-    <input type="text" class="form-control" id="apellidos" name="apellidos" placeholder="Ingresa el Apellido">
-  </div>
-  <div class="form-group">
-    <label for="direccion">Direccion</label>
-    <input type="text" class="form-control" id="direccion"  name="direccion" placeholder="Ingresa la Direccion">
-  </div>
-  <div class="form-group">
-    <label for="nit">NIT</label>
-    <input type="text" class="form-control" id="nit" name="nit"  placeholder="Ingresa NIT">
-  </div>
+    </div>
+
     <input type="hidden" class="form-control" id="crear" name="crear"  value="crear">
 
 
-  <button type="submit" class="btn btn-primary">Guardar</button>
-</form>
-      </div>
+    <button type="submit" class="btn btn-primary">Guardar</button>
+    </form>
+    </div>
 
-      <!-- Fin del Modal -->
+    <!-- Fin del Modal -->
 
 
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-      </div>
+    <div class="modal-footer">
+     <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+    </div>
 
     </div>
-  </div>
-</div>
+    </div>
+    </div>
 
-{% if datos_a_editar %}
-              <script type="text/javascript">
-                $(window).on('load',function(){
-                    $('#myModalEditar').modal('show');
-                });
+    {% if datos_a_editar %}
+           <script type="text/javascript">
+             $(window).on('load',function(){
+                 $('#myModalEditar').modal('show');
+             });
 
-              </script>
-<!-- The Modal -->
-<div class="modal" id="myModalEditar">
-  <div class="modal-dialog">
+           </script>
+    <!-- The Modal -->
+    <div class="modal" id="myModalEditar">
+    <div class="modal-dialog">
     <div class="modal-content">
 
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h4 class="modal-title">Editar CLiente</h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
+    <!-- Modal Header -->
+    <div class="modal-header">
+     <h4 class="modal-title">Editar Categoria</h4>
+     <button type="button" class="close" data-dismiss="modal">&times;</button>
+    </div>
 
-      <!-- Modal body -->
-      <div class="modal-body">
-         <form action="#" method="POST">{% csrf_token %}
-  <div class="form-group">
-    <label for="nombres">Nombres</label>
+    <!-- Modal body -->
+    <div class="modal-body">
+      <form action="#" method="POST">{% csrf_token %}
+    <div class="form-group">
+    <label for="nombres">Nombre</label>
     <input type="text" class="form-control" id="nombres" name="nombres" value="{{datos_a_editar.nombre}}" placeholder="Ingresa el Nombre">
-  </div>
-  <div class="form-group">
-    <label for="apellidos">Apellidos</label>
-    <input type="text" class="form-control" id="apellidos" name="apellidos" value="{{datos_a_editar.apellidos}}" placeholder="Ingresa el Apellido">
-  </div>
-  <div class="form-group">
-    <label for="direccion">Direccion</label>
-    <input type="text" class="form-control" id="direccion"  name="direccion" value="{{datos_a_editar.direccion}}" placeholder="Ingresa la Direccion">
-  </div>
-  <div class="form-group">
-    <label for="nit">NIT</label>
-    <input type="text" class="form-control" id="nit" name="nit" value="{{datos_a_editar.nit}}"  placeholder="Ingresa NIT">
-  </div>
+    </div>
+
     <input type="hidden" class="form-control" id="editar_datos" name="editar_datos"  value="editar_datos">
     <input type="hidden" class="form-control" id="id_editar" name="id_editar" value="{{datos_a_editar.id}}">
     <input type="hidden" class="form-control" id="editar" name="editar" value="editar">
 
-  <button type="submit" class="btn btn-primary">Editar</button>
-</form>
-      </div>
+    <button type="submit" class="btn btn-primary">Editar</button>
+    </form>
+    </div>
 
 
 
 
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-      </div>
+    <div class="modal-footer">
+     <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+    </div>
 
     </div>
-  </div>
-</div>
-  <!-- Fin del Modal -->
-{% endif %}
-<table class="table">
+    </div>
+    </div>
+    <!-- Fin del Modal -->
+    {% endif %}
+    <table class="table" id="category">
     <thead>
-      <tr>
-        <th>Nombres</th>
-        <th>Apellido</th>
-        <th>Dirección</th>
-        <th>NIT</th>
-        <th>-</th>
-        <th>-</th>
+    <tr>
+     <th>Nombre</th>
+
+     <th>-</th>
+     <th>-</th>
 
 
-      </tr>
+    </tr>
     </thead>
     <tbody>
-      {% for x in listado_clientes %}
-      <tr>
-        <td>{{x.nombre}}</td>
-        <td>{{x.apellidos}}</td>
-        <td>{{x.direccion}}</td>
-        <td>{{x.nit}}</td>
-        <td>
-          <form action="" method= "POST">{% csrf_token %}
-                    <button type="submit" class="btn btn-outline-success">
-                        <input type="hidden" class="form-control" id="id_editar" name="id_editar" value="{{x.id}}">
-                        <input type="hidden" class="form-control" id="editar" name="editar" value="editar">
-                        <span class="glyphicon glyphicon-pencil"> </span>&nbsp;Editar
-                    </button>
-                </form>
+    {% for x in listado_categorias %}
+    <tr>
+     <td>{{x.nombre}}</td>
 
-        </td>
-        <td>
-           <form action="" method= "POST">{% csrf_token %}
-                    <button type="submit" class="btn btn-outline-danger">
-                        <input type="hidden" class="form-control" id="id_eliminar" name="id_eliminar" value="{{x.id}}">
-                        <input type="hidden" class="form-control" id="eliminar" name="eliminar" value="eliminar">
-                        <span class="glyphicon glyphicon-pencil"> </span>&nbsp;Eliminar
-                    </button>
-                </form>
-        </td>
+     <td>
+       <form action="" method= "POST">{% csrf_token %}
+                 <button type="submit" class="btn btn-outline-success">
+                     <input type="hidden" class="form-control" id="id_editar" name="id_editar" value="{{x.id}}">
+                     <input type="hidden" class="form-control" id="editar" name="editar" value="editar">
+                     <span class="glyphicon glyphicon-pencil"> </span>&nbsp;Editar
+                 </button>
+             </form>
 
-      </tr>
-      {% endfor %}
+     </td>
+     <td>
+        <form action="" method= "POST">{% csrf_token %}
+                 <button type="submit" class="btn btn-outline-danger">
+                     <input type="hidden" class="form-control" id="id_eliminar" name="id_eliminar" value="{{x.id}}">
+                     <input type="hidden" class="form-control" id="eliminar" name="eliminar" value="eliminar">
+                     <span class="glyphicon glyphicon-pencil"> </span>&nbsp;Eliminar
+                 </button>
+             </form>
+     </td>
+
+    </tr>
+    {% endfor %}
 
     </tbody>
-  </table>
+    </table>
 
 
 
     </div>
-    <br>
-    <br>
-    <br>
 
-  </body>
-</html>
+    </div>
+
+    {% block script %}
+      <script>
+
+      $(document).ready( function () {
+      $('#category').DataTable();
+      } );
+
+      </script>
+    {% endblock %}
+
+
+    {% endblock %}

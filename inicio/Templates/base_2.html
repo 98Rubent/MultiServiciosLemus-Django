@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container">
+
+      {# navbar #}
+      <div class="row">
+        <div class="col-3">
+          <a href="{%url "menu"%}">
+          <img class="img-responsive" src= "{% static 'img/logo_multiservicios.png' %}" height="150" width="250">
+        </a>
+        </div>
+
+        <div class="col-9">
+          <br>
+        <ul class="nav justify-content-end">
+          <li class="nav-item">
+            <p class="nav-link">{{request.user.first_name}} {{request.user.last_name}} </p>
+          </li>
+          <li class="nav-item">
+        <a class="nav-link btn btn-primary" href="{%url "logout"%}">Cerrar Sesion</a>
+        </li>
+        </ul>
+        </div>
+      </div>
+        {# end navbar #}
+<div class="menu" style="display:flex;  justify-content: space-between; flex-direction: row;">
+      <!-- Begin Sidebar   -->
+      {% block sidebar %}
+<div class="col" style="border-radius: 10px;">
+  <br>
+  <br>
+  <br>
+  <a class="list-group-item list-group-item-action" href="{%url "pos"%}">POS</a>
+  <a class="list-group-item list-group-item-action"  href="{%url "clientes"%}">Clientes</a>
+  <a class="list-group-item list-group-item-action" href="{%url "productos"%}">Productos</a>
+  <a class="list-group-item list-group-item-action" href="{%url "categorias"%}">Categoritas</a>
+  <a class="list-group-item list-group-item-action" href="{%url "proveedores"%}">Proveedores</a>
+  <a class="list-group-item list-group-item-action" href="{%url "reports"%}">Reportes</a>
+</div>
+      {% endblock %}
+      <!-- End Sidebar -->
+
+      {% block content %}
+
+      {% endblock %}
+    </div>
+
+  </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
+
+  {% block script %}
+
+  {% endblock %}
+  <br>
+  <br>
+  </body>
+</html>

@@ -1,0 +1,17 @@
+import serial
+
+from ubidots import ApiClient
+
+print("Program Started")
+
+api = ApiClient(token ='BBFF-k5bNqPxsvjDmKrzRnYTZpCzw7B7z8E') #update token
+
+my_temp = api.get_variable('Insert your variable token here') #update variable ID
+
+ser = serial.Serial('/dev/ttyACM0', 9600) #update with port for Arduino
+
+while True:
+    read_serial = ser.readline()
+    tempReading = (float(read_serial)) #convert to float
+    new_value = my_temp.save_value({'value': tempReading})
+    print(read_serial) #prints serial reading to python

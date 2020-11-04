@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="container">
+      {# navbar #}
+      <div class="row">
+        <div class="col-3">
+          <img class="img-responsive" src= "{% static 'img/logo_multiservicios.png' %}" height="100" width="240">
+        </div>
+        <div class="col-9">
+
+        <ul class="nav justify-content-end">
+          <li class="nav-item">
+            <a class="nav-link active" href="{%url "index"%}">Inicio</a>
+              </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{%url "conocenos"%}">Conocenos</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="{%url "contactanos"%}">Contactanos</a>
+              </li>
+            <li class="nav-item">
+        <a class="nav-link " href="{%url "login"%}">Iniciar Sesion</a>
+        </li>
+        </ul>
+        </div>
+      </div>
+        {# end navbar #}
+
+      {% block content %}
+
+      {% endblock %}
+    </div>
+
+<script>
+  {% block script %}
+
+  {% endblock %}
+</script>
+  </body>
+</html>

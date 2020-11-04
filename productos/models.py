@@ -6,6 +6,9 @@ from proveedores.models import Proveedor
 
 class Categoria(models.Model):
 
+	nombre = models.CharField('Nombre' , max_length=50)
+
+
 	class Meta:
 		verbose_name = 'Tipo de categoria'
 		verbose_name_plural = 'Tipos de categorias'
@@ -16,7 +19,6 @@ class Categoria(models.Model):
 	ForeignKey == llave de uno a muchos
 	"""
 
-	nombre = models.CharField('Nombre' , max_length=50)
 
 	def __str__(self):
 		return " {}".format(self.nombre)
