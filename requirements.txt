@@ -1,4 +1,4 @@
-Django==2.2.2
+Django==2.2.20
 django-easy-pdf==0.1.1
 
 six==1.15.0
